@@ -1,8 +1,8 @@
 import { ComposableMap, Geographies, Geography } from "react-simple-maps";
 import { useContext, useEffect, useState } from "react";
-import { AppContext } from "@/context/app/AppContext.tsx";
+import { AppContext } from "@/context/app/AppContext";
 import zipState from "zip-state";
-import { getRelativeDate, getStateName } from "@/utils/utils.ts";
+import { getRelativeDate, getStateName } from "@/utils/utils";
 
 const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
 const states = ["California", "Colardo", "Nevada", "Oklahoma", "Arizona"];
@@ -21,9 +21,7 @@ export const LandingMapAndReports = () => {
   useEffect(() => {
     const intervalId = setInterval(() => {
       console.log("selecting random state");
-      const report = (notifications ?? [])[
-        Math.floor(Math.random() * states.length)
-      ];
+      const report = (notifications ?? [])[Math.floor(Math.random() * states.length)];
       setIsFading(true);
       setTimeout(() => {
         const location = zipState(report.zipCode);
@@ -54,11 +52,7 @@ export const LandingMapAndReports = () => {
                 <Geography
                   key={geo.rsmKey}
                   geography={geo}
-                  fill={
-                    geo.properties.name === selectedState
-                      ? "#FDB462"
-                      : "#D6D6DA"
-                  }
+                  fill={geo.properties.name === selectedState ? "#FDB462" : "#D6D6DA"}
                   stroke="#FFFFFF"
                 />
               ))
@@ -67,31 +61,21 @@ export const LandingMapAndReports = () => {
         </ComposableMap>
       </div>
       {selectedReport && (
-        <div
-          className={`mt-5 report-container ${isFading ? "fade-out" : "fade-in"}`}
-        >
+        <div className={`mt-5 report-container ${isFading ? "fade-out" : "fade-in"}`}>
           <span className={"flex gap-x-1 items-center justify-center text-sm"}>
-            <p className={"text-2xl"}>
-              {selectedReport.type === "SHORTAGE" ? "⚡" : "🙌"}
-            </p>
+            <p className={"text-2xl"}>{selectedReport.type === "SHORTAGE" ? "⚡" : "🙌"}</p>
             {selectedReport.type === "SHORTAGE" ? (
               <>
                 <p className={"font-bold"}>Patient</p> report shortage in
-                <p className={"font-bold"}>
-                  {selectedReport.medication}
-                </p>in {selectedReport.location}
-                <p className={"lowercase font-light text-xs"}>
-                  ({selectedReport.date})
-                </p>
+                <p className={"font-bold"}>{selectedReport.medication}</p>in {selectedReport.location}
+                <p className={"lowercase font-light text-xs"}>({selectedReport.date})</p>
               </>
             ) : (
               <>
                 <p className={"font-bold"}>Supplier</p> found
                 <p className={"font-bold"}>{selectedReport.medication}</p>
                 shortage in {selectedReport.location}
-                <p className={"lowercase font-light text-xs"}>
-                  ({selectedReport.date})
-                </p>
+                <p className={"lowercase font-light text-xs"}>({selectedReport.date})</p>
               </>
             )}
           </span>

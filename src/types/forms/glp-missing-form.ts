@@ -1,4 +1,4 @@
-import { REPORTER_TYPE } from "@/constants/enums.ts";
+import { REPORTER_TYPE } from "@/constants/enums";
 
 export interface GLPMissingReactHookForm {
   zipCode: string;

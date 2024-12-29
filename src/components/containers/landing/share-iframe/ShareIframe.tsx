@@ -1,13 +1,12 @@
-import { Button } from "@/components/ui/button.tsx";
-import { Dialog } from "@/components/shared/dialog/Dialog.tsx";
+import { Button } from "@/components/ui/button";
 import { useCallback, useEffect, useState } from "react";
-import { Textarea } from "@/components/ui/textarea.tsx";
-import { Label } from "@/components/ui/label.tsx";
-import { Input } from "@/components/ui/input.tsx";
-import { useToast } from "@/hooks/use-toast.ts";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import { useToast } from "@/hooks/use-toast";
+import { Dialog } from "@/components/shared/dialog/Dialog";
 
-const defaultIframeContent =
-  "<iframe src='http://localhost:5173/{{logo}}' width='650px' height='500px'></iframe>";
+const defaultIframeContent = `<iframe src='${process.env.NEXT_PUBLIC_IFRAME_URL}/{{logo}}' width='650px' height='500px'></iframe>`;
 
 export const ShareIframe = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,11 +18,7 @@ export const ShareIframe = () => {
   const [logoUrl, setLogoUrl] = useState("");
   const { toast } = useToast();
   const buildIframeContent = useCallback(() => {
-    setContent(
-      defaultIframeContent
-        .toString()
-        .replace("{{logo}}", logoUrl ? `?logoUrl=${logoUrl}` : ""),
-    );
+    setContent(defaultIframeContent.toString().replace("{{logo}}", logoUrl ? `?logoUrl=${logoUrl}` : ""));
   }, [logoUrl]);
 
   const copyToClipboard = async () => {
@@ -69,13 +64,8 @@ export const ShareIframe = () => {
           Copy
         </Button>
 
-        <p className={"text-sm font-semibold my-3"}>
-          Preview of what it looks like
-        </p>
-        <div
-          className={"max-h-[300px]"}
-          dangerouslySetInnerHTML={createHtmlContent()}
-        ></div>
+        <p className={"text-sm font-semibold my-3"}>Preview of what it looks like</p>
+        <div className={"max-h-[300px]"} dangerouslySetInnerHTML={createHtmlContent()}></div>
       </Dialog>
       <div className={"flex justify-end mb-5"}>
         <Button onClick={openShareIframe}>Share</Button>

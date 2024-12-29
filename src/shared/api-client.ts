@@ -1,5 +1,5 @@
-import axios from 'axios';
+import axios from "axios";
 
 export default axios.create({
-  baseURL: import.meta.env.VITE_BASE_URL,
+  baseURL: process.env.NEXT_PUBLIC_BASE_URL,
 });

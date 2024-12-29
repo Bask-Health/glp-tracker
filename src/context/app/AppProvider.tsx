@@ -1,9 +1,9 @@
-import { ReactNode, useCallback, useEffect, useState } from 'react';
-import { AppContext } from './AppContext.tsx';
-import { MedicationNotification } from '@/types/notifications.ts';
-import { useMedications } from '@/hooks/use-medications.ts';
-import { MedicationDoses } from '@/types/medications-doses.ts';
-import { MedicationReports } from '@/types/medications-reports.ts';
+import { ReactNode, useCallback, useEffect, useState } from "react";
+import { AppContext } from "./AppContext";
+import { MedicationNotification } from "@/types/notifications";
+import { useMedications } from "@/hooks/use-medications";
+import { MedicationDoses } from "@/types/medications-doses";
+import { MedicationReports } from "@/types/medications-reports";
 
 export const AppProvider = ({ children }: { children: ReactNode }) => {
   const { getMedications, getNotifications, getReports } = useMedications();
@@ -36,9 +36,9 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     handleWindowSizeChange();
-    window.addEventListener('resize', handleWindowSizeChange);
+    window.addEventListener("resize", handleWindowSizeChange);
     return () => {
-      window.removeEventListener('resize', handleWindowSizeChange);
+      window.removeEventListener("resize", handleWindowSizeChange);
     };
   }, [handleWindowSizeChange]);
 

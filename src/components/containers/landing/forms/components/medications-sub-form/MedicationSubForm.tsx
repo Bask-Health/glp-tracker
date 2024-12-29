@@ -1,10 +1,10 @@
-import { useFormContext } from 'react-hook-form';
-import { FC } from 'react';
-import { DosesForm, MedicationDoses } from '@/types/medications-doses.ts';
-import { FormControl, FormItem, FormLabel } from '@/components/ui/form.tsx';
-import { Checkbox } from '@/components/ui/checkbox.tsx';
-import { CheckedState } from '@radix-ui/react-checkbox';
-import { GLPMissingReactHookForm } from '@/types/forms/glp-missing-form.ts';
+import { useFormContext } from "react-hook-form";
+import { FC } from "react";
+import { DosesForm, MedicationDoses } from "@/types/medications-doses";
+import { FormControl, FormItem, FormLabel } from "@/components/ui/form";
+import { Checkbox } from "@/components/ui/checkbox";
+import { CheckedState } from "@radix-ui/react-checkbox";
+import { GLPMissingReactHookForm } from "@/types/forms/glp-missing-form";
 
 interface MedicationDoseProps {
   medicationUid: string;
@@ -40,7 +40,7 @@ const MedicationDose: FC<MedicationDoseProps> = ({ medicationUid, doses }) => {
     <div className="space-y-1 pl-3 pt-3" key={`${fieldName}.dose-${medicationUid}-byd`}>
       {doses.map((dose) => (
         <div key={`${fieldName}.dose-${dose.uuid}-asd`}>
-          <FormItem className={'space-x-2'}>
+          <FormItem className={"space-x-2"}>
             <FormControl>
               <Checkbox
                 id={`dose-${dose.uuid}`}
@@ -64,12 +64,12 @@ export const MedicationSubForm = ({ medicationsDoses }: MedicationSubFormProps) 
   } = useFormContext<GLPMissingReactHookForm>();
 
   const onCheckChange = (checked: CheckedState, medicationDoseField: MedicationDoses) => {
-    const medications = getValues('medications') ?? [];
+    const medications = getValues("medications") ?? [];
     if (checked) {
-      setValue('medications', [...medications, { uid: medicationDoseField.uuid, dose: [] }]);
+      setValue("medications", [...medications, { uid: medicationDoseField.uuid, dose: [] }]);
     } else {
       setValue(
-        'medications',
+        "medications",
         medications.filter((medication) => medication.uid !== medicationDoseField.uuid),
       );
     }
@@ -77,11 +77,11 @@ export const MedicationSubForm = ({ medicationsDoses }: MedicationSubFormProps) 
 
   return (
     <div className="space-y-3">
-      <p className={`mb-1 text-sm font-semibold ${errors?.medications ? 'text-destructive' : ''}`}>Medications</p>
+      <p className={`mb-1 text-sm font-semibold ${errors?.medications ? "text-destructive" : ""}`}>Medications</p>
       {medicationsDoses.map((medicationDoseField: MedicationDoses) => {
         return (
           <div key={`medication-subform-${medicationDoseField.uuid}`}>
-            <FormItem className={'space-x-2'}>
+            <FormItem className={"space-x-2"}>
               <FormControl>
                 <Checkbox onCheckedChange={(checked) => onCheckChange(checked, medicationDoseField)} />
               </FormControl>
@@ -94,7 +94,7 @@ export const MedicationSubForm = ({ medicationsDoses }: MedicationSubFormProps) 
       <div>
         {/* @ts-expect-error TS2722: Cannot invoke an object which is possibly undefined*/}
         {errors?.medications?.map((item) => (
-          <div className={'text-destructive text-sm font-semibold'} key={`error-medication-subform-${item?.message}`}>
+          <div className={"text-destructive text-sm font-semibold"} key={`error-medication-subform-${item?.message}`}>
             <p>{item?.dose?.message}</p>
             <p>{item?.message}</p>
           </div>

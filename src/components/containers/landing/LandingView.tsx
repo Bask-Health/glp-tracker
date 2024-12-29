@@ -1,7 +1,9 @@
-import { LandingReportSection } from "./report-section/LandingReportSection.tsx";
-import { LandingShortageSection } from "./shortage-section/LandingShortageSection.tsx";
-import { LandingMapAndReports } from "@/components/containers/landing/map-and-reports/LandingMapAndReports.tsx";
-import { ShareIframe } from "@/components/containers/landing/share-iframe/ShareIframe.tsx";
+"use client";
+
+import { ShareIframe } from "@/components/containers/landing/share-iframe/ShareIframe";
+import { LandingMapAndReports } from "@/components/containers/landing/map-and-reports/LandingMapAndReports";
+import { LandingReportSection } from "@/components/containers/landing/report-section/LandingReportSection";
+import { LandingShortageSection } from "@/components/containers/landing/shortage-section/LandingShortageSection";
 
 export const LandingPageView = () => {
   return (
@@ -10,8 +12,7 @@ export const LandingPageView = () => {
         <ShareIframe />
         <p className={"font-semibold text-4xl"}>GLP-1 Supply Tracker</p>
         <p className={"mt-5"}>
-          Stay up-to-date on where GLP-1s are in shortage ⚡ and where folks are
-          having success finding them 🙌
+          Stay up-to-date on where GLP-1s are in shortage ⚡ and where folks are having success finding them 🙌
         </p>
         <LandingMapAndReports />
         <LandingReportSection />

@@ -1,10 +1,16 @@
-import React, { useContext } from "react";
-import { AppContext } from "@/context/app/AppContext";
+"use client";
+
+import { MainLoadingView } from "@/components/containers/main-loading-view/MainLoadingView";
 import { Header } from "@/components/header/Header";
 import { Footer } from "@/components/footer/Footer";
-import { MainLoadingView } from "@/components/containers/main-loading-view/MainLoadingView";
+import { ReactNode, useContext } from "react";
+import { AppContext } from "@/context/app/AppContext";
 
-export const MainLayout = ({ children }: { children: React.ReactNode }) => {
+interface LandingWrapperProps {
+  children: ReactNode;
+}
+
+export const LandingWrapper = ({ children }: LandingWrapperProps) => {
   const { isLoading } = useContext(AppContext);
 
   return (

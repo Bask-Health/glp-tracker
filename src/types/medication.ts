@@ -1,4 +1,4 @@
-import { DOSE_STATUS } from "../constants/enums.ts";
+import { DOSE_STATUS } from "@/constants/enums";
 
 export interface Medication {
   title: string;

@@ -1,5 +1,5 @@
 import * as yup from "yup";
-import { REPORTER_TYPE } from "@/constants/enums.ts";
+import { REPORTER_TYPE } from "@/constants/enums";
 import zipState from "zip-state";
 
 export const MissingFormSchema = yup.object().shape({
@@ -10,14 +10,8 @@ export const MissingFormSchema = yup.object().shape({
     .test("is-valid-zip-code", "ZipCode must be in the US", (value) => {
       return !!zipState(value);
     }),
-  email: yup
-    .string()
-    .email("Enter a valid email")
-    .required("You must enter your email"),
-  reporterType: yup
-    .string()
-    .required("You must select a reporter type")
-    .oneOf(Object.values(REPORTER_TYPE)),
+  email: yup.string().email("Enter a valid email").required("You must enter your email"),
+  reporterType: yup.string().required("You must select a reporter type").oneOf(Object.values(REPORTER_TYPE)),
   medications: yup
     .array(
       yup.object({

@@ -1,11 +1,5 @@
-import {
-  Dispatch,
-  ReactNode,
-  SetStateAction,
-  useCallback,
-  useContext,
-} from "react";
-import { AppContext } from "@/context/app/AppContext.tsx";
+import { Dispatch, ReactNode, SetStateAction, useCallback, useContext } from "react";
+import { AppContext } from "@/context/app/AppContext";
 import Modal from "react-responsive-modal";
 import { Sheet } from "react-modal-sheet";
 import "react-responsive-modal/styles.css";
@@ -40,12 +34,7 @@ export const Dialog = ({ children, isOpen, setIsOpen }: DialogProps) => {
       )}
       {!isMobile && (
         <>
-          <Modal
-            open={isOpen}
-            onClose={onCloseModal}
-            center
-            classNames={{ modal: "min-w-[500px] min-h-[100px]" }}
-          >
+          <Modal open={isOpen} onClose={onCloseModal} center classNames={{ modal: "min-w-[500px] min-h-[100px]" }}>
             {children}
           </Modal>
         </>

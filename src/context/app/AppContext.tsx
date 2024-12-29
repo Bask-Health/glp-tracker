@@ -1,7 +1,9 @@
-import React, { createContext } from 'react';
-import { MedicationNotification } from '@/types/notifications.ts';
-import { MedicationDoses } from '@/types/medications-doses.ts';
-import { MedicationReports } from '@/types/medications-reports.ts';
+"use client";
+
+import React, { createContext } from "react";
+import { MedicationNotification } from "@/types/notifications";
+import { MedicationDoses } from "@/types/medications-doses";
+import { MedicationReports } from "@/types/medications-reports";
 
 interface AppContext {
   isLoading: boolean;
@@ -14,7 +16,7 @@ interface AppContext {
 
 export const AppContext = createContext<AppContext>({
   setIsLoading: () => {
-    throw new Error('setIsLoading must be used within AppProvider');
+    throw new Error("setIsLoading must be used within AppProvider");
   },
   isLoading: false,
   isMobile: false,
