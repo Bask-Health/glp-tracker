@@ -6,7 +6,7 @@ import Image from "next/image";
 
 export const MainLoadingView = () => {
   const searchParams = useSearchParams();
-  const logoUrl = searchParams.get("logoUrl");
+  const logoUrl = searchParams?.get("logoUrl");
   return (
     <div className={"flex justify-center items-center h-svh"}>
       <div className={"flex flex-col items-center"}>

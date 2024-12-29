@@ -19,7 +19,7 @@ export const LandingWrapper = ({ children }: LandingWrapperProps) => {
       {!isLoading ? (
         <>
           <Header />
-          <div className={"bg-neutral-100 px-6 md:px-24 lg:px-48 xl:px-96 py-5"}>{children}</div>
+          <div className={"bg-neutral-100 px-6 md:px-24 lg:px-48 xl:px-96 py-5 text-r-gray-100"}>{children}</div>
           <Footer />
         </>
       ) : null}

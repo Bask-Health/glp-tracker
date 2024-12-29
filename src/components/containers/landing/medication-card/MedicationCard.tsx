@@ -1,5 +1,6 @@
 import { MedicationReports } from "@/types/medications-reports";
 import { DOSE_STATUS } from "@/constants/enums";
+import Image from "next/image";
 
 interface MedicationCardProps {
   report: MedicationReports;

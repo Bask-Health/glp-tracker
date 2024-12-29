@@ -31,7 +31,7 @@ export const LandingReportSection = () => {
             <div className={"mt-3"}>
               <p className={"font-semibold"}>Need supply?</p>
               <p className={"mb-4"}>
-                We'll let you know when supply is found nearby and notify the FDA about the shortage.
+                We&#39;ll let you know when supply is found nearby and notify the FDA about the shortage.
               </p>
             </div>
             <div className={"mt-3 2xl:pl-4 2xl:border-l 2xl:border-l-gray-300"}>
@@ -42,7 +42,7 @@ export const LandingReportSection = () => {
           <div className={"grid grid-cols-1 2xl:grid-cols-2 gap-6 text-r-gray-100 mt-4"}>
             <div>
               <Button onClick={onMissingGLPSClick} color={"primary"}>
-                I can't find GLP-1s ⚡
+                I can&#39;t find GLP-1s ⚡
               </Button>
             </div>
             <div className={" xl:pl-4"}>

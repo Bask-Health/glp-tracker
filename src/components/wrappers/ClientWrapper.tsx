@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode } from "react";
+import { ReactNode, Suspense } from "react";
 import { AppProvider } from "@/context/app/AppProvider";
 import { Toaster } from "@/components/ui/toaster";
 
@@ -10,11 +10,11 @@ interface ClientWrapperProps {
 
 export const ClientWrapper = ({ children }: ClientWrapperProps) => {
   return (
-    <>
+    <Suspense>
       <AppProvider>
         <Toaster />
         {children}
       </AppProvider>
-    </>
+    </Suspense>
   );
 };
