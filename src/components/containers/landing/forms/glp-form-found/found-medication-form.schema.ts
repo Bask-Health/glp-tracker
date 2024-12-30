@@ -1,4 +1,5 @@
 import * as yup from "yup";
+import zipState from "zip-state";
 
 export const FoundMedicationFormSchema = yup.object().shape({
   pharmacyAddress: yup.string().required(),
@@ -11,4 +12,11 @@ export const FoundMedicationFormSchema = yup.object().shape({
       }),
     )
     .required(),
+  zipCode: yup
+    .string()
+    .required("ZipCode is required")
+    .matches(/^[0-9]{5}(?:-[0-9]{4})?$/, "Invalid ZipCode")
+    .test("is-valid-zip-code", "ZipCode must be in the US", (value) => {
+      return !!zipState(value);
+    }),
 });

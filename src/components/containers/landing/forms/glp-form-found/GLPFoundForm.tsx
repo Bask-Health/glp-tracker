@@ -27,6 +27,7 @@ export const GLPFoundMedicationForm = ({ setOpen }: GLPFoundMedicationProps) => 
       medications: [],
       email: "",
       pharmacyAddress: "",
+      zipCode: "",
     },
   });
 
@@ -50,6 +51,20 @@ export const GLPFoundMedicationForm = ({ setOpen }: GLPFoundMedicationProps) => 
       <Separator className={"my-4"} />
 
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
+        <FormField
+          control={form.control}
+          name="zipCode"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>ZipCode</FormLabel>
+              <FormControl>
+                <Input placeholder="Zip Code" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
         <FormField
           control={form.control}
           name="pharmacyAddress"

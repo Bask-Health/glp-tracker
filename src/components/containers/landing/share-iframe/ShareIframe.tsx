@@ -5,6 +5,7 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
 import { Dialog } from "@/components/shared/dialog/Dialog";
+import { ExternalLink, Plus } from "lucide-react";
 
 const defaultIframeContent = `<iframe src='${process.env.NEXT_PUBLIC_IFRAME_URL}/{{logo}}' width='650px' height='500px'></iframe>`;
 
@@ -68,7 +69,15 @@ export const ShareIframe = () => {
         <div className={"max-h-[300px]"} dangerouslySetInnerHTML={createHtmlContent()}></div>
       </Dialog>
       <div className={"flex justify-end mb-5"}>
-        <Button onClick={openShareIframe}>Share</Button>
+        <Button
+          onClick={openShareIframe}
+          className="group relative overflow-hidden bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 animate-shimmer"
+        >
+          <div className="absolute inset-0 bg-white/20 group-hover:bg-white/30 transition-colors" />
+          <Plus className="mr-2 h-4 w-4 transition-transform group-hover:rotate-90 duration-300" />
+          Add to My Site
+          <ExternalLink className="ml-2 h-4 w-4 opacity-70" />
+        </Button>
       </div>
     </>
   );
