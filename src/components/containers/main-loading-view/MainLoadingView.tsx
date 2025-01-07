@@ -1,7 +1,6 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import Image from "next/image";
 
 export const MainLoadingView = () => {
   const searchParams = useSearchParams();

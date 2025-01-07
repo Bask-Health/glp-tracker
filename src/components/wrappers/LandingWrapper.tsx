@@ -2,7 +2,6 @@
 
 import { MainLoadingView } from "@/components/containers/main-loading-view/MainLoadingView";
 import { Header } from "@/components/header/Header";
-import { Footer } from "@/components/footer/Footer";
 import { ReactNode, useContext } from "react";
 import { AppContext } from "@/context/app/AppContext";
 
