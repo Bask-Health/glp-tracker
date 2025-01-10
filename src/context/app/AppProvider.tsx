@@ -19,9 +19,11 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   const loadInitialData = useCallback(async () => {
-    const { data: notifications } = await getNotifications();
-    const { data: medications } = await getMedications();
-    const { data: reports } = await getReports();
+    const [{ data: notifications }, { data: medications }, { data: reports }] = await Promise.all([
+      getNotifications(),
+      getMedications(),
+      getReports(),
+    ]);
     setMedications(medications);
     setNotifications(notifications);
     setReports(reports);
