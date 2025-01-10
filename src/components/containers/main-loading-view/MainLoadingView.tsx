@@ -9,7 +9,9 @@ export const MainLoadingView = () => {
     <div className={"flex justify-center items-center h-svh"}>
       <div className={"flex flex-col items-center"}>
         {logoUrl && <img src={logoUrl} className={"w-32 animate-logoSpin"} alt={"Logo"} />}
-        <p className={"text-xl font-light mt-4 animate-pulseFontWeight"}>Please wait till while we fetch your data</p>
+        <p className={"lg:text-xl font-light mt-4 animate-pulseFontWeight"}>
+          Please wait till while we fetch your data
+        </p>
       </div>
     </div>
   );

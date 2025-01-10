@@ -1,5 +1,5 @@
 import { ComposableMap, Geographies, Geography } from "react-simple-maps";
-import { useContext, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import { AppContext } from "@/context/app/AppContext";
 import zipState from "zip-state";
 import { getRelativeDate, getStateName } from "@/utils/utils";
@@ -18,29 +18,31 @@ export const LandingMapAndReports = () => {
   const [isFading, setIsFading] = useState(false);
   const { notifications } = useContext(AppContext);
 
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      console.log("selecting random state");
-      const report = (notifications ?? [])[Math.floor(Math.random() * states.length)];
-      setIsFading(true);
-      setTimeout(() => {
-        const location = zipState(report.zipCode);
-        if (!location) {
-          return;
-        }
-        setSelectedReport({
-          type: report.type,
-          medication: report.medication,
-          location: getStateName(location),
-          date: getRelativeDate(report.createdAt),
-        });
-        setSelectedState(getStateName(location));
-        setIsFading(false);
-      }, 500);
+  const selectRandomReport = useCallback(() => {
+    const report = (notifications ?? [])[Math.floor(Math.random() * states.length)];
+    setIsFading(true);
+    setSelectedState("");
+    setTimeout(() => {
+      const location = zipState(report.zipCode);
+      if (!location) {
+        return;
+      }
+      setSelectedReport({
+        type: report.type,
+        medication: report.medication,
+        location: getStateName(location),
+        date: getRelativeDate(report.createdAt),
+      });
+      setSelectedState(getStateName(location));
+      setIsFading(false);
     }, 2000);
+  }, [notifications]);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => selectRandomReport(), 6000);
 
     return () => clearInterval(intervalId);
-  }, [notifications, selectedState]);
+  }, [notifications, selectRandomReport, selectedState]);
 
   return (
     <>
