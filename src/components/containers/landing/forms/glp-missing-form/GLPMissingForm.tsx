@@ -27,7 +27,7 @@ export const GLPMissingForm = ({ setOpen }: GLPMissingFormProps) => {
     resolver: yupResolver(MissingFormSchema),
     defaultValues: {
       medications: [],
-      email: "",
+      fullName: "",
       zipCode: "",
     },
   });
@@ -96,12 +96,12 @@ export const GLPMissingForm = ({ setOpen }: GLPMissingFormProps) => {
 
         <FormField
           control={form.control}
-          name="email"
+          name="fullName"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Email</FormLabel>
+              <FormLabel>Name</FormLabel>
               <FormControl>
-                <Input placeholder="Email" {...field} />
+                <Input placeholder="Enter your fullname" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>

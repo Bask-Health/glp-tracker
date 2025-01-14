@@ -25,7 +25,7 @@ export const GLPFoundMedicationForm = ({ setOpen }: GLPFoundMedicationProps) => 
     resolver: yupResolver(FoundMedicationFormSchema),
     defaultValues: {
       medications: [],
-      email: "",
+      fullName: "",
       pharmacyAddress: "",
       zipCode: "",
     },
@@ -83,12 +83,12 @@ export const GLPFoundMedicationForm = ({ setOpen }: GLPFoundMedicationProps) => 
 
         <FormField
           control={form.control}
-          name="email"
+          name="fullName"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Email</FormLabel>
+              <FormLabel>Name</FormLabel>
               <FormControl>
-                <Input placeholder="Email" {...field} />
+                <Input placeholder="Enter your fullname" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>

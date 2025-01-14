@@ -10,7 +10,11 @@ export const MissingFormSchema = yup.object().shape({
     .test("is-valid-zip-code", "ZipCode must be in the US", (value) => {
       return !!zipState(value);
     }),
-  email: yup.string().email("Enter a valid email").required("You must enter your email"),
+  fullName: yup
+    .string()
+    .required("You must enter your name")
+    .min(5, "Your name must be min of 5 letters")
+    .max(50, "Your name must be max of 50 letters"),
   reporterType: yup.string().required("You must select a reporter type").oneOf(Object.values(REPORTER_TYPE)),
   medications: yup
     .array(

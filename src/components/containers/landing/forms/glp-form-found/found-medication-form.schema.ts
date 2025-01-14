@@ -3,7 +3,11 @@ import zipState from "zip-state";
 
 export const FoundMedicationFormSchema = yup.object().shape({
   pharmacyAddress: yup.string().required(),
-  email: yup.string().email().required(),
+  fullName: yup
+    .string()
+    .required("You must enter your name")
+    .min(5, "Your name must be min of 5 letters")
+    .max(50, "Your name must be max of 50 letters"),
   medications: yup
     .array(
       yup.object({
